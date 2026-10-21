@@ -26,7 +26,7 @@ bindVenueNavigation();
 const scenes=[...document.querySelectorAll('.scene')];let index=0,playing=false,autoTimer=null,progressTimer=null,lastPageMusicTimer=null,startAt=0,elapsed=0,musicOn=false,soundtrackStarted=false;
 const $=id=>document.getElementById(id),progress=$('progress');
 const creditsScene=$('s13'),creditsRoll=creditsScene.querySelector('.credits-roll');
-function stopCreditsMusic(){const soundtrack=$('soundtrack');soundtrack.pause();soundtrack.currentTime=0;musicOn=false;$('music').textContent='\u266a Music off'}
+function stopCreditsMusic(){const soundtrack=$('soundtrack');soundtrack.pause();soundtrack.currentTime=0;musicOn=false;$('music').textContent='Music off'}
 function finishCredits(){if(!creditsScene.classList.contains('credits-complete')){creditsScene.classList.add('credits-complete');stopCreditsMusic()}}
 new MutationObserver(()=>{if(creditsScene.classList.contains('active')&&matchMedia('(prefers-reduced-motion: reduce)').matches){creditsScene.classList.add('credits-complete');stopCreditsMusic()}}).observe(creditsScene,{attributes:true,attributeFilter:['class']});
 creditsRoll.addEventListener('animationend',event=>{if(event.animationName==='creditsRoll')finishCredits()});
@@ -43,10 +43,10 @@ function beginTimer(){
   stopTimer();
   startAt=Date.now();
   const isVideoScene=scenes[index].id==='s7-video';
-  const d=isVideoScene?Math.max(duration(),12000):duration();
+  const d=isVideoScene?Math.max(duration(),10000):duration();
   autoTimer=setTimeout(()=>{
     if(index<scenes.length-1)show(index+1);
-    else{playing=false;$('play').textContent='\u21bb Replay presentation';stopTimer()}
+    else{playing=false;$('play').textContent='Replay presentation';stopTimer()}
   },d);
   if(isVideoScene){
     progressTimer=setInterval(()=>{
@@ -60,14 +60,14 @@ function beginTimer(){
     progress.style.width=((index+p)/scenes.length*100)+'%';
   },80);
 }
-async function startSoundtrack(){if(musicOn)return;const soundtrack=$('soundtrack');try{await soundtrack.play();musicOn=true;soundtrackStarted=true;$('music').textContent='? Music on'}catch(error){$("music").textContent="? Tap for music"}}
-let soundtrackGestureStarted=false;function startSoundtrackOnGesture(event){if(soundtrackGestureStarted||event.target?.closest?.("#music"))return;soundtrackGestureStarted=true;document.removeEventListener("pointerdown",startSoundtrackOnGesture);document.removeEventListener("keydown",startSoundtrackOnGesture);startSoundtrack()}document.addEventListener("pointerdown",startSoundtrackOnGesture);document.addEventListener("keydown",startSoundtrackOnGesture);function togglePlay(){playing=!playing;if(playing){if(!soundtrackStarted)startSoundtrack();$('play').textContent='? Pause presentation';beginTimer()}else{$('play').textContent='? Resume presentation';stopTimer()}}$('prev').onclick=()=>{stopTimer();show(index-1)};$('next').onclick=()=>{stopTimer();show(index+1)};$('play').onclick=()=>{if(index===scenes.length-1&&!playing)show(0);togglePlay()};
+async function startSoundtrack(){if(musicOn)return;const soundtrack=$('soundtrack');try{await soundtrack.play();musicOn=true;soundtrackStarted=true;$('music').textContent='Music on'}catch(error){$("music").textContent="Tap for music"}}
+let soundtrackGestureStarted=false;function startSoundtrackOnGesture(event){if(soundtrackGestureStarted||event.target?.closest?.("#music"))return;soundtrackGestureStarted=true;document.removeEventListener("pointerdown",startSoundtrackOnGesture);document.removeEventListener("keydown",startSoundtrackOnGesture);startSoundtrack()}document.addEventListener("pointerdown",startSoundtrackOnGesture);document.addEventListener("keydown",startSoundtrackOnGesture);function togglePlay(){playing=!playing;if(playing){if(!soundtrackStarted)startSoundtrack();$('play').textContent='Pause presentation';beginTimer()}else{$('play').textContent='Resume presentation';stopTimer()}}$('prev').onclick=()=>{stopTimer();show(index-1)};$('next').onclick=()=>{stopTimer();show(index+1)};$('play').onclick=()=>{if(index===scenes.length-1&&!playing)show(0);togglePlay()};
 const ringVideo=$('s7-video').querySelector('video');ringVideo.addEventListener('click',event=>{event.preventDefault();if(scenes[index].id==='s7-video'){stopTimer();show(index+1)}});ringVideo.addEventListener('ended',()=>{if(scenes[index].id==='s7-video'){stopTimer();show(index+1)}});
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')$('next').click();if(e.key==='ArrowLeft')$('prev').click();if(e.key===' '){e.preventDefault();$('play').click()}});
 document.addEventListener('click',e=>{if(e.target.closest('.controls,button,a,video'))return;const x=e.clientX;if(scenes[index].id==='s13'&&x>=window.innerWidth/2){if(creditsScene.classList.contains('credits-complete'))$('next').click();else finishCredits();return}if(x<window.innerWidth/2)$('prev').click();else $('next').click()});
 let touchX=0;document.addEventListener('touchstart',e=>touchX=e.changedTouches[0].screenX,{passive:true});document.addEventListener('touchend',e=>{const touch=e.changedTouches[0],dx=touch.screenX-touchX;if(e.target.closest('.controls,button,a,video'))return;e.preventDefault();if(Math.abs(dx)>70){if(dx<0)$('next').click();else $('prev').click()}else if(scenes[index].id==='s13'&&touch.clientX>=window.innerWidth/2){if(creditsScene.classList.contains('credits-complete'))$('next').click();else finishCredits()}else if(touch.clientX<window.innerWidth/2)$('prev').click();else $('next').click()},{passive:false});
-$('music').onclick=async()=>{const soundtrack=$('soundtrack');if(!musicOn){soundtrack.currentTime=0;try{await soundtrack.play();musicOn=true;soundtrackStarted=true;$('music').textContent='? Music on'}catch(error){$('music').textContent='? Music unavailable';musicOn=false}}else{soundtrack.pause();soundtrack.currentTime=0;musicOn=false;$('music').textContent='? Music off'}};
-show(0);playing=true;$('play').textContent='? Pause presentation';beginTimer();startSoundtrack();
+$('music').onclick=async()=>{const soundtrack=$('soundtrack');if(!musicOn){soundtrack.currentTime=0;try{await soundtrack.play();musicOn=true;soundtrackStarted=true;$('music').textContent='Music on'}catch(error){$('music').textContent='Music unavailable';musicOn=false}}else{soundtrack.pause();soundtrack.currentTime=0;musicOn=false;$('music').textContent='Music off'}};
+show(0);playing=true;$('play').textContent='Pause presentation';beginTimer();startSoundtrack();
 
 
 
