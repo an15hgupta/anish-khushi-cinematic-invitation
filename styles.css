@@ -1,4 +1,4 @@
-﻿:root{--gold:#edc873;--cream:#fff2d4;--wine:#310d17;--burgundy:#681a2a;--marigold:#f1a84b;--peacock:#4b9990;--rose:#b95c55}
+:root{--gold:#edc873;--cream:#fff2d4;--wine:#310d17;--burgundy:#681a2a;--marigold:#f1a84b;--peacock:#4b9990;--rose:#b95c55}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#19080d;color:var(--cream);font-family:'Cormorant Garamond',serif}
 body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;background:radial-gradient(ellipse at center,transparent 45%,#14060b9c 100%)}
 #stage{position:relative;width:100%;height:100svh;overflow:hidden;background:radial-gradient(ellipse at center,#783342,#210a11 80%)}
@@ -152,3 +152,19 @@ body.sagai-active .sagai-copy{background:transparent;border-color:transparent;bo
 .venues-scene{padding:0;background:#fffaf1}
 .venues-scene:before,.venues-scene:after{display:none}
 .venues-iframe{display:block;width:100%;height:100%;border:0;background:#fffaf1;pointer-events:auto;touch-action:pan-y;overscroll-behavior:contain}
+
+/* Clearer typography for the Phere scene */
+.panigrahan-copy .eyebrow{font-size:clamp(12px,1.8vh,16px);margin-bottom:8px}
+.panigrahan-copy .deva{font-size:clamp(24px,4vh,34px);line-height:1.25}
+.panigrahan-copy .date{font-size:clamp(14px,2.1vh,18px);letter-spacing:.06em}
+.panigrahan-copy .time{font-size:clamp(24px,3.8vh,32px);margin:8px 0}
+.panigrahan-copy .ornament{font-size:23px;margin:7px 0}
+.panigrahan-copy .panigrahan-meridiem{font-size:.72em}
+
+.ghudchadi-details .time-meridiem,.baraat-copy .time-meridiem{font-size:.72em}
+
+.baraat-copy .baraat-followup{font-family:'Cormorant Garamond',serif;font-style:normal;font-size:clamp(18px,3.3vw,25px);font-weight:600;line-height:1.2;margin:4px 0 8px}
+
+.baraat-copy h1.script{font-size:clamp(48px,10vw,78px)!important;line-height:1.05;margin:0 0 10px;color:#6b2a13!important;transform:none!important}
+
+.baraat-copy .tiny{position:relative;z-index:5;color:#482012;background:#fff3d9c2;border:0;border-radius:10px;padding:8px 12px;font-size:clamp(14px,2.8vw,19px);font-weight:700;line-height:1.3;text-shadow:none;box-shadow:0 2px 10px #3a190f26}
