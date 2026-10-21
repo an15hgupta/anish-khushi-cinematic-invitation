@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#45070f">
+<title>Anish &amp; Khushi — Wedding Anniversary Invitation</title>
+<style>
+  :root {
+    --burgundy: #43070f;
+    --gold: #e5b64c;
+    --cream: #fff0c9;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow-x: hidden;
+    padding: 24px 14px;
+    background:
+      radial-gradient(ellipse at 50% 35%, #7c1423 0%, #4a0812 46%, #21040a 100%);
+    color: var(--cream);
+    font-family: Georgia, "Times New Roman", serif;
+  }
+  .stage {
+    position: relative;
+    width: min(94vw, 540px);
+    perspective: 1400px;
+    isolation: isolate;
+  }
+  .card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    border: 1px solid rgba(243, 196, 77, .7);
+    border-radius: 5px;
+    box-shadow: 0 28px 65px rgba(0,0,0,.48), 0 0 24px rgba(241,183,66,.12);
+    transform-origin: 50% 55%;
+    animation: cardEntrance 1.6s cubic-bezier(.2,.8,.2,1) both, gentleFloat 7s ease-in-out 1.6s infinite;
+    background: #610b19;
+  }
+  .card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #610b19;
+  }
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 15%, rgba(255,244,201,.12) 34%, transparent 48%);
+    transform: translateX(-130%);
+    animation: sheen 2.2s ease-out 1.5s 1;
+  }
+  .petals {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .petal {
+    position: absolute;
+    top: -12vh;
+    width: 10px;
+    height: 15px;
+    border-radius: 80% 10% 80% 10%;
+    background: linear-gradient(135deg, #ffe18a, #c88924 72%);
+    opacity: 0;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.25));
+    animation: fall var(--duration) linear var(--delay) infinite;
+    left: var(--left);
+    transform: rotate(var(--rotation));
+  }
+  .sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ffe7a2;
+    box-shadow: 0 0 12px 3px rgba(255,215,113,.48);
+    opacity: 0;
+    animation: twinkle var(--duration) ease-in-out var(--delay) infinite;
+    left: var(--left);
+    top: var(--top);
+    pointer-events: none;
+  }
+  .hint {
+    margin: 18px 0 0;
+    text-align: center;
+    color: rgba(255,235,190,.76);
+    font: 11px/1.5 system-ui, sans-serif;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    animation: hintIn 1.2s ease 1s both;
+  }
+  @keyframes cardEntrance {
+    from { opacity: 0; transform: rotateY(-9deg) translateY(28px) scale(.94); }
+    to { opacity: 1; transform: rotateY(0) translateY(0) scale(1); }
+  }
+  @keyframes gentleFloat {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -7px; }
+  }
+  @keyframes sheen {
+    0% { transform: translateX(-130%); }
+    100% { transform: translateX(130%); }
+  }
+  @keyframes frameGlow {
+    0%, 100% { opacity: .62; }
+    50% { opacity: 1; }
+  }
+  @keyframes fall {
+    0% { opacity: 0; transform: translate3d(0,-8vh,0) rotate(0deg); }
+    10% { opacity: .9; }
+    85% { opacity: .8; }
+    100% { opacity: 0; transform: translate3d(var(--drift),112vh,0) rotate(620deg); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(.5); }
+    50% { opacity: .8; transform: scale(1.25); }
+  }
+  @keyframes hintIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 480px) {
+    body { padding: 18px 10px; }
+    .stage { width: min(96vw, 420px); }
+    .hint { font-size: 9px; letter-spacing: .16em; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="petals" aria-hidden="true" id="petals"></div>
+  <main class="stage" aria-label="Animated wedding anniversary invitation">
+    <div class="card">
+      <img src="../assets/anniversary-invitation.png" alt="Wedding anniversary invitation for Anish and Khushi, Wednesday 25 November 2026">
+    </div>
+  </main>
+<script>
+  // Create drifting golden petals and soft twinkles.
+  const layer = document.getElementById('petals');
+  for (let i = 0; i < 22; i++) {
+    const petal = document.createElement('span');
+    petal.className = 'petal';
+    petal.style.setProperty('--left', (Math.random() * 100) + 'vw');
+    petal.style.setProperty('--delay', (-Math.random() * 18) + 's');
+    petal.style.setProperty('--duration', (12 + Math.random() * 13) + 's');
+    petal.style.setProperty('--rotation', (Math.random() * 360) + 'deg');
+    petal.style.setProperty('--drift', ((Math.random() - .5) * 180) + 'px');
+    petal.style.opacity = '.8';
+    layer.appendChild(petal);
+  }
+  for (let i = 0; i < 18; i++) {
+    const sparkle = document.createElement('span');
+    sparkle.className = 'sparkle';
+    sparkle.style.setProperty('--left', (4 + Math.random() * 92) + '%');
+    sparkle.style.setProperty('--top', (5 + Math.random() * 90) + '%');
+    sparkle.style.setProperty('--delay', (-Math.random() * 5) + 's');
+    sparkle.style.setProperty('--duration', (2.5 + Math.random() * 3) + 's');
+    layer.appendChild(sparkle);
+  }
+</script>
+</body>
+</html>

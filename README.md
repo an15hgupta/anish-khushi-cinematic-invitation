@@ -1,6 +1,6 @@
 # Anish Weds Khushi — Cinematic Wedding Invitation
 
-Open `index.html` in a modern browser. This is a full-screen animated presentation, not a scrolling/sliding-page website:
+Serve this folder with a local web server (for example, `python -m http.server`) and open `http://localhost:8000`, or visit the live site. The scene modules load with `fetch`, so opening `index.html` directly as a `file://` URL will not load them. This is a full-screen animated presentation, not a scrolling/sliding-page website:
 - 10 scenes including the two supplied opening visuals
 - automatic timed scene progression when Play presentation is selected
 - Previous/Next, keyboard arrow keys, spacebar, and swipe navigation
@@ -18,4 +18,4 @@ Image credits:
 
 The new image files are stored locally in `assets/`. CC BY-SA 4.0 images remain under that license; the visual treatment is applied in CSS and the invitation is not presented as depicting the couple or their actual venues.
 
-To publish: upload the extracted folder contents to https://app.netlify.com/drop. Keep `assets/` alongside `index.html`.
+To publish: upload the complete project folder to the existing Netlify site. Keep `assets/`, `scenes/`, `styles.css`, and `app.js` alongside `index.html`.
