@@ -107,6 +107,146 @@
       max-width: 290px;
     }
     .scan strong { color: var(--maroon); }
+    .wedding-venue {
+      text-align: center;
+      padding: 36px 16px;
+      color: #704522;
+    }
+    .venue-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .venue-address {
+      font-size: .95rem;
+      opacity: .8;
+    }
+    .directions-button {
+      position: relative;
+      display: inline-block;
+      margin: 16px 0 8px;
+      padding: 13px 26px;
+      background: #8b1e2d;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 28px;
+      font-weight: 600;
+    }
+    .map-preview {
+      position: relative;
+      display: block;
+      max-width: 640px;
+      margin: 24px auto 0;
+      height: 300px;
+      overflow: hidden;
+      border: 2px solid #d7b56d;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px #00000018;
+    }
+    .map-preview iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      pointer-events: none;
+    }
+    .map-pin {
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      transform: translate(-50%, -100%);
+      font-size: 34px;
+      filter: drop-shadow(0 2px 3px #0005);
+      pointer-events: none;
+    }
+    .map-label {
+      position: absolute;
+      left: 50%;
+      top: 47%;
+      transform: translateX(-50%);
+      background: #fff;
+      color: #704522;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px #0002;
+      pointer-events: none;
+    }
+    .sagai-venue {
+      text-align: center;
+      padding: 36px 16px;
+      color: #704522;
+    }
+    .sagai-venue h2 {
+      font-family: serif;
+      font-size: clamp(1.7rem, 5vw, 2.4rem);
+    }
+    .sagai-venue .venue-name { font-size: 1.15rem; font-weight: 600; }
+    .sagai-venue .venue-address { color: #806b58; font-size: .95rem; }
+    .sagai-venue .directions-button {
+      display: inline-block;
+      margin: 16px 0;
+      padding: 13px 26px;
+      border-radius: 30px;
+      background: #8b1e2d;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .sagai-venue .map-preview {
+      position: relative;
+      display: block;
+      width: 100%;
+      max-width: 640px;
+      height: 300px;
+      margin: 16px auto;
+      overflow: hidden;
+      border: 2px solid #d7b56d;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px #00000018;
+    }
+    .sagai-venue .map-preview iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      pointer-events: none;
+    }
+    .sagai-venue .map-pin {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      font-size: 34px;
+      pointer-events: none;
+    }
+    .sagai-venue .map-label {
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #fffdf7;
+      color: #704522;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px #0002;
+      pointer-events: none;
+    }
+    .sagai-venue .map-open-hint {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      padding: 8px 12px;
+      border-radius: 20px;
+      background: #fffdf7;
+      color: #704522;
+      font-size: 12px;
+      pointer-events: none;
+    }
     footer {
       text-align: center;
       color: var(--muted);
@@ -118,6 +258,11 @@
       .venues { grid-template-columns: 1fr; gap: 18px; }
       .venue { padding: 24px 20px; }
       .qr { width: min(100%, 290px); }
+    }
+    @media (max-width: 600px) {
+      .map-preview { height: 240px; }
+      .sagai-venue .map-preview { height: 240px; }
+      .sagai-venue .map-label { max-width: 85%; white-space: normal; }
     }
     @media print {
       body { background: #fff; }
@@ -131,26 +276,78 @@
     <header>
       <div class="eyebrow">With joy and blessings</div>
       <h1>Sagai &amp; Wedding Venues</h1>
-      <p class="intro">Scan the QR code to open the venue location in Google Maps.</p>
+      <p class="intro">View each venue and open directions in Google Maps.</p>
       <div class="ornament" aria-hidden="true">&#10047; &#10022; &#10047;</div>
     </header>
 
     <section class="venues" aria-label="Event venues">
-      <article class="venue">
-        <div class="number">01 &middot; Sagai Ceremony</div>
-        <h2>Majestic Princess<br>Marriage Garden</h2>
-        <div class="venue-label">Sagai Venue</div>
-        <img class="qr" src="../assets/sagai-venue-pgmr.png" alt="QR code for Sagai venue location">
-        <p class="scan"><strong>Scan to get directions</strong><br>Open your phone camera and point it at this QR code to view the location.</p>
-      </article>
+      <section class="venue wedding-venue sagai-venue">
+        <h2>Sagai Ceremony</h2>
+        <p class="venue-name">Magestic Princess Marriage Garden</p>
+        <p class="venue-address">Kesar Chauraha, Mansarovar, Jaipur, Rajasthan</p>
 
-      <article class="venue">
-        <div class="number">02 &middot; Wedding Ceremony</div>
-        <h2>Shri Pratap<br>Marriage Garden</h2>
-        <div class="venue-label">Wedding Venue</div>
-        <img class="qr" src="../assets/wedding-venue-spmg.png" alt="QR code for wedding venue location">
-        <p class="scan"><strong>Scan to get directions</strong><br>Open your phone camera and point it at this QR code to view the location.</p>
-      </article>
+        <a
+          class="directions-button"
+          href="https://www.google.com/maps/dir/?api=1&amp;destination=26.8223148%2C75.7535737"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          📍 Get Directions
+        </a>
+
+        <a
+          class="map-preview"
+          href="https://www.google.com/maps/dir/?api=1&amp;destination=26.8223148%2C75.7535737"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Get directions to the Sagai venue"
+        >
+          <iframe
+            title="Sagai venue map"
+            src="https://maps.google.com/maps?q=26.8223148%2C75.7535737&amp;z=16&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+          ></iframe>
+          <span class="map-pin">📍</span>
+          <span class="map-label">Magestic Princess Marriage Garden</span>
+          <span class="map-open-hint">Tap to open directions ↗</span>
+        </a>
+      </section>
+
+      <section class="venue wedding-venue">
+        <h2>Wedding Venue</h2>
+        <p class="venue-name">Shri Pratap Marriage Garden</p>
+        <p class="venue-address">Gandhi Path Road, Vaishali Nagar, Jaipur, Rajasthan</p>
+
+        <a
+          href="https://www.google.com/maps/dir/?api=1&amp;destination=26.9064%2C75.7328703"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="directions-button"
+        >
+          📍 Get Directions
+        </a>
+
+        <a
+          href="https://www.google.com/maps/dir/?api=1&amp;destination=26.9064%2C75.7328703"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="map-preview"
+          aria-label="Open Shri Pratap Marriage Garden in Google Maps"
+        >
+          <iframe
+            title="Shri Pratap Marriage Garden map"
+            src="https://maps.google.com/maps?q=26.9064%2C75.7328703&amp;z=16&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            tabindex="-1"
+          ></iframe>
+          <span class="map-pin">📍</span>
+          <span class="map-label">Shri Pratap Marriage Garden</span>
+        </a>
+      </section>
+
     </section>
 
     <footer>We look forward to celebrating these special moments with you.</footer>
