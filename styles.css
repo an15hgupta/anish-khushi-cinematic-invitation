@@ -307,3 +307,5 @@ body.sangeet-active:after{background:radial-gradient(ellipse at center,transpare
 #s6 .sangeet-time-pill{font-family:Arial,Helvetica,sans-serif;font-style:normal;font-weight:400}
 #s6 .sangeet-time-pill{display:flex;justify-content:center;align-items:center;text-align:center;padding:0}
 #s6 .sangeet-time-pill span{display:block;margin:0;line-height:1.05;text-align:center}
+#s6 .sangeet-venue p{font-family:Georgia,'Times New Roman',serif}
+#s6 .sangeet-venue p{font-weight:400!important;font-synthesis:none;-webkit-text-stroke:0;text-shadow:none}
