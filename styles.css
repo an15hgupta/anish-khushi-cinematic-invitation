@@ -224,3 +224,4 @@ body.sangeet-active:after{background:radial-gradient(ellipse at center,transpare
 #s6 .sangeet-venue p{margin:0;color:#38170f;font:400 clamp(13px,3.2vw,22px)/1.25 Georgia,'Times New Roman',serif;font-synthesis:none;-webkit-text-stroke:0;text-shadow:none}
 #s6 .sangeet-pin{width:22px;min-width:22px;height:auto;fill:#946019;stroke:#603804;stroke-width:1.2;overflow:visible}
 #s6 .sangeet-pin circle{fill:#fff0d0;stroke:none}
+@media(max-width:600px){#s6 .sangeet-canvas{width:min(100vw,56.25svh);height:min(100svh,177.78vw);aspect-ratio:9/16}#s6 .sangeet-art{object-fit:cover}}
